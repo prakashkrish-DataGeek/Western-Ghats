@@ -14,7 +14,7 @@
 
 ## 🗺 Live Project Page
 
-**[→ View Interactive 2030 Risk Map & NDVI Time Slider](https://prakashkrish-datageek.github.io/western-ghats-risk/)**
+**[→ View Interactive 2030 Risk Map & NDVI Time Slider](https://prakashkrish-datageek.github.io/Western-Ghats/)**
 
 ---
 
