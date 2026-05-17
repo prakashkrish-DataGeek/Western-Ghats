@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Western Ghats — 2030 Frontier Risk Digital Twin</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-page    : #050e0a;
+      --bg-card    : rgba(10, 22, 14, 0.96);
+      --accent-green: #3dcc7a;
+      --accent-mag  : #ff00ff;
+      --accent-gold : #d4a820;
+      --text-main  : #d4eedd;
+      --text-muted : #6aaa88;
+      --text-dim   : #3a6048;
+      --border     : rgba(60, 200, 100, 0.22);
+    }
+
+    html, body { height: 100%; font-family: 'Segoe UI', Arial, sans-serif; }
+
+    body {
+      background: var(--bg-page);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ── Header ────────────────────────────────────────────────────── */
+    header {
+      background: linear-gradient(135deg, rgba(4,14,8,0.99) 0%, rgba(10,28,16,0.99) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 28px 14px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .header-left h1 {
+      font-size: 18px;
+      font-weight: 700;
+      color: #e0f5e8;
+      letter-spacing: 0.4px;
+      line-height: 1.3;
+    }
+    .header-left h1 span.emoji { margin-right: 6px; }
+    .header-left .subtitle {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 4px;
+      letter-spacing: 0.2px;
+    }
+
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 6px;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(60,200,100,0.15);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 3px 10px;
+      font-size: 10px;
+      color: var(--accent-green);
+      letter-spacing: 0.3px;
+    }
+
+    /* ── Map ────────────────────────────────────────────────────────── */
+    .map-wrapper { flex: 1; display: flex; flex-direction: column; }
+
+    .map-container {
+      flex: 1;
+      min-height: 520px;
+      position: relative;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      border: none;
+      display: block;
+    }
+
+    /* ── Info strip ─────────────────────────────────────────────────── */
+    .info-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+    }
+
+    .info-card {
+      flex: 1 1 200px;
+      padding: 14px 20px;
+      border-right: 1px solid var(--border);
+    }
+    .info-card:last-child { border-right: none; }
+
+    .info-card h3 {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--accent-green);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 6px;
+    }
+    .info-card p {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .info-card .val {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--accent-gold);
+      margin-bottom: 2px;
+    }
+
+    /* ── Methodology ────────────────────────────────────────────────── */
+    .method-section {
+      background: rgba(4, 12, 8, 0.98);
+      border-top: 1px solid var(--border);
+      padding: 20px 28px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .method-card {
+      background: rgba(10, 24, 14, 0.80);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .method-card h4 {
+      font-size: 11px;
+      font-weight: 700;
+      color: #70e090;
+      margin-bottom: 7px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .method-card p {
+      font-size: 10.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .method-card code {
+      background: rgba(60,200,100,0.12);
+      color: #80e8a0;
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 10px;
+    }
+    .method-card a {
+      color: var(--accent-green);
+      text-decoration: none;
+    }
+    .method-card a:hover { text-decoration: underline; }
+
+    /* ── Footer ─────────────────────────────────────────────────────── */
+    footer {
+      background: rgba(2, 8, 4, 0.99);
+      border-top: 1px solid var(--border);
+      padding: 10px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+    footer a { color: var(--accent-green); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── Loading overlay ─────────────────────────────────────────────── */
+    #map-loading {
+      position: absolute;
+      inset: 0;
+      background: var(--bg-page);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 10;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid rgba(60,200,100,0.20);
+      border-top-color: var(--accent-green);
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+
+<!-- ── Header ──────────────────────────────────────────────────────────────── -->
+<header>
+  <div class="header-left">
+    <h1>
+      <span class="emoji">🌿</span>
+      Western Ghats — 2030 Frontier Risk Digital Twin
+    </h1>
+    <div class="subtitle">
+      Random Forest · Landsat 5 / 8 / 9 · 2006–2026 · Predicting Forest Loss Probability by 2030
+    </div>
+  </div>
+  <div class="header-right">
+    <span class="badge">🛰️ Landsat Multi-Mission</span>
+    <span class="badge">🌍 Western Ghats, India</span>
+    <span class="badge">🤖 Random Forest ML</span>
+    <span class="badge">📅 21 Annual Frames</span>
+  </div>
+</header>
+
+<!-- ── Map ─────────────────────────────────────────────────────────────────── -->
+<div class="map-wrapper">
+  <div class="map-container">
+    <div id="map-loading">
+      <div class="spinner"></div>
+      <span>Loading Digital Twin map…</span>
+    </div>
+    <iframe
+      id="map-iframe"
+      src="wg_frontier_risk_2030.html"
+      title="Western Ghats 2030 Frontier Risk Digital Twin"
+      loading="lazy"
+      onload="document.getElementById('map-loading').style.display='none';">
+    </iframe>
+  </div>
+
+  <!-- ── Info strip ─────────────────────────────────────────────────────────── -->
+  <div class="info-strip">
+    <div class="info-card">
+      <h3>Study Area</h3>
+      <div class="val">~160,000 km²</div>
+      <p>Western Ghats UNESCO World Heritage Site.
+         Runs 1,600 km along India's western coast.</p>
+    </div>
+    <div class="info-card">
+      <h3>Time Horizon</h3>
+      <div class="val">2006–2030</div>
+      <p>21 annual dry-season Landsat composites (2006–2026)
+         used to predict 2030 deforestation risk.</p>
+    </div>
+    <div class="info-card">
+      <h3>Spatial Grid</h3>
+      <div class="val">~5 km</div>
+      <p>GEE export at 5 km grid (scale=5000).
+         ~6,500 analysis pixels across the corridor.</p>
+    </div>
+    <div class="info-card">
+      <h3>Sensors</h3>
+      <div class="val">L5/8/9</div>
+      <p>Landsat 5 TM (2006–2012), Landsat 8 OLI (2013–2022),
+         Landsat 9 OLI-2 (2023–2026). Dry season: Jan–Apr.</p>
+    </div>
+    <div class="info-card">
+      <h3>Risk Metric</h3>
+      <div class="val">RF Prob.</div>
+      <p>Random Forest probability of forest-to-non-forest
+         transition by 2030. Magenta = extreme risk.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── Methodology ──────────────────────────────────────────────────────────── -->
+<div class="method-section">
+  <div class="method-card">
+    <h4>🛰️ Data Sources</h4>
+    <p>
+      Google Earth Engine collections
+      <code>LANDSAT/LT05/C02/T1_L2</code>,
+      <code>LANDSAT/LC08/C02/T1_L2</code>,
+      <code>LANDSAT/LC09/C02/T1_L2</code>.
+      Annual dry-season (Jan–Apr) median composites.
+      Terrain from <code>CGIAR/SRTM90_V4</code>.
+      Settlement proximity from <code>JRC/GHSL/P2016/SMOD_POP_GLOBE_V1</code>.
+    </p>
+  </div>
+  <div class="method-card">
+    <h4>🌿 NDVI & Feature Engineering</h4>
+    <p>
+      Per-pixel annual NDVI computed for 2006–2026.
+      Temporal features: OLS trend slope (NDVI/yr), standard deviation,
+      minimum observed NDVI, count of loss-years (NDVI &lt; 0.35).
+      Terrain features: elevation, slope, distance to nearest settlement.
+    </p>
+  </div>
+  <div class="method-card">
+    <h4>🤖 Random Forest Model</h4>
+    <p>
+      Binary classifier (200 trees, <code>class_weight='balanced'</code>).
+      Training labels: pixels forested in 2006 that were deforested by 2015
+      (class=1) vs. still forested in 2015 (class=0).
+      Output mode: <code>predict_proba</code> → continuous [0, 1] risk score.
+    </p>
+  </div>
+  <div class="method-card">
+    <h4>🗺️ Visualisation</h4>
+    <p>
+      Interactive Folium map with two risk layers: (1) HeatMapWithTime
+      showing 21 annual NDVI frames for historical context; (2) static
+      RF probability heatmap using a yellow → orange → Digital Magenta
+      palette to highlight extreme-risk frontier zones.
+    </p>
+  </div>
+  <div class="method-card">
+    <h4>⚠️ Conservation Context</h4>
+    <p>
+      The Western Ghats is one of the world's eight biodiversity hotspots,
+      harbouring over 5,000 plant species and 139 mammal species.
+      With the UN 2026 Global Forest Goals Report reporting a global net
+      loss of 40M+ hectares since 2015, predictive risk tools are critical
+      for directing scarce conservation capital before ecological collapse.
+    </p>
+  </div>
+  <div class="method-card">
+    <h4>🔧 Pipeline</h4>
+    <p>
+      GEE JS → <code>WG_Landsat_Annual_NDVI_2006_2026.csv</code><br>
+      → <code>wg_01_process_landsat.py</code> (features + labels)<br>
+      → <code>wg_02_rf_risk_map.py</code> (RF model + Folium map)<br>
+      → <code>web/wg_frontier_risk_2030.html</code><br><br>
+      Demo mode (no GEE required):<br>
+      <code>python python/wg_01_process_landsat.py --demo</code><br>
+      <code>python python/wg_02_rf_risk_map.py</code>
+    </p>
+  </div>
+</div>
+
+<!-- ── Footer ───────────────────────────────────────────────────────────────── -->
+<footer>
+  <div>
+    Data: USGS / NASA Landsat · Google Earth Engine · JRC GHSL ·
+    Processing: Python / scikit-learn / Folium · Map: © CartoDB, © OpenStreetMap
+  </div>
+  <div>
+    by Prakash Krishnamachari · 2026 ·
+    <a href="https://github.com/prakashkrishnamachari" target="_blank" rel="noopener">
+      GitHub
+    </a>
+  </div>
+</footer>
+
+</body>
+</html>
