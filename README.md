@@ -8,13 +8,13 @@
 [![Python](https://img.shields.io/badge/Python-3.11-blue?style=flat&logo=python)](https://python.org)
 [![scikit-learn](https://img.shields.io/badge/scikit--learn-RandomForest-orange?style=flat&logo=scikit-learn)](https://scikit-learn.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Live Map](https://img.shields.io/badge/Live%20Map-View%20Online-ff00ff)](https://prakashkrish-DataGeek.github.io/western-ghats-risk/web/)
+[![Live Map](https://img.shields.io/badge/Live%20Map-View%20Online-ff00ff)](https://prakashkrish-DataGeek.github.io/Western-Ghats/)
 
 ---
 
 ## 🗺 Live Project Page
 
-**[→ View Interactive 2030 Risk Map & NDVI Time Slider](https://prakashkrish-DataGeek.github.io/western-ghats-risk/web/)**
+**[→ View Interactive 2030 Risk Map & NDVI Time Slider](https://prakashkrish-DataGeek.github.io/Western-Ghats/)**
 
 ---
 
@@ -73,7 +73,7 @@ Training labels:
 ## Repository Structure
 
 ```
-western-ghats-risk/
+Western-Ghats/
 ├── gee_scripts/
 │   ├── wg_landsat_export.js        ← Landsat 5/8/9 NDVI + terrain CSV export
 │   └── rf_2030_predictor.js        ← GEE-native RF predictor (reference only)
@@ -101,8 +101,8 @@ western-ghats-risk/
 
 ```bash
 # 1. Clone repo
-git clone https://github.com/prakashkrish-DataGeek/western-ghats-risk.git
-cd western-ghats-risk
+git clone https://github.com/prakashkrish-DataGeek/Western-Ghats.git
+cd Western-Ghats
 
 # 2. Install dependencies
 pip install -r requirements.txt
